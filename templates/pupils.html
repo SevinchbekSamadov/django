@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pupils</title>
+</head>
+<body>
+    <h1> {{pupils}} </h1>
+        <table class="table bg-dark">
+            <thead>
+                <th>FIO</th>
+                <th>BALL</th>
+            </thead>
+            <tbody>
+                {% for pupil in object_list %}
+                    <tr>
+                        <th> {{forloop.counter}} </th>
+                        <td>{{pupil.p_name}}</td>
+                        <td>{{pupil.score}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+
+</body>
+</html>

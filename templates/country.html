@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countries</title>
+</head>
+<body>
+    <h1>World List Countries</h1>
+        <table class="table bg-dark">
+            <thead>
+                <th>#</th>
+                <th>NAME</th>
+                <th>POPULATION</th>
+                <th>AREA</th>
+                <th>DENSITY</th>
+            </thead>
+            <tbody>
+                {% for country in object_list %}
+                    <tr>
+                        <th> {{forloop.counter}} </th>
+                        <td>{{country.name}}</td>
+                        <td>{{country.population}}</td>
+                        <td>{{country.area}}</td>
+                        <td>{{country.density}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>    
+        </table>
+</body>
+</html>
