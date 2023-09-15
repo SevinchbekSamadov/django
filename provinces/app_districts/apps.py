@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class PupilsConfig(AppConfig):
+class AppDistrictsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'pupils'
+    name = 'app_districts'

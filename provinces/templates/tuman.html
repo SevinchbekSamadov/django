@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div style="float: right">
+        <button onclick="setlang('uz')">UZ</button>
+        <button onclick="setlang('en')">EN</button>
+        <button onclick="setlang('ru')">RU</button>
+    </div>
+    <h1></h1>
+    <table class="table table-dark">
+        <thead>
+            <th scope="col">#</th>
+            <th scope="col">tuman</th>
+            {% comment %} <th scope="col">Poytaxt</th> {% endcomment %}
+        </thead>
+        <tbody>
+            {% for tuman in object_list %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ tuman.tuman}}</td>
+                    {% comment %} <td>{{ tuman.tumen_id}}</td> {% endcomment %}
+                    {% comment %} <td>{{ capital.capital}}</td> {% endcomment %}
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    <style>
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+
+    <script>
+        function setlang(lang) {
+            const Http = new XMLHttpRequest();
+            const url='/setlang/' + lang;
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>viloyatlar</title>
+</head>
+<body>
+    {% for tuman in object_list %}
+        <h1>{{tuman.tuman_uz}} <h1>
+            {% for item in tuman.item_set.all %}
+            <h1>{{item_engine}} <h1>
+            {% endfor %}
+    {% endfor %}
+</body>
+</html> {% endcomment %}
