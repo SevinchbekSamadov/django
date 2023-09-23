@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    ABOUT
+{% endblock %}
+{% block content %}
+    <h1>ABOUT</h1>
+    <ul>
+        {% for about in object_list %}
+            <li>{{ about.about }}</li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function setLang(lang) {
+            const Http = new XMLHttpRequest();
+            const url='/setLang/' + lang;
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                location.reload();
+            }
+        }
+    </script>
+{% endblock %}

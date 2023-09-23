@@ -5,10 +5,22 @@
     <title>viloyatlar</title>
 </head>
 <body>
+    <div style = "float: right">
+        {% if user.is_authenticated %}
+        <div class="dropdown">
+            <span>{{ user.username}}</span>
+            <div class="dropdown-content">
+              <p><a href="/accounts/logout">Chiqish</a></p>
+            </div>
+        </div>
+        {% else %}
+            <a href = "/accounts/login/">Kirish</a>yoki<a href = "/accounts/register/">Registratsiya</a>
+        {% endif %}
+    </div>
     {% for viloyat in object_list %}
         <h1><a href="{% url 'tuman' %}">{{viloyat.viloyat}} </a><h1>
     {% endfor %}
-</body>
+</body>  
 </html>
 {% comment %} <div style="float: right">
     <button onclick="setlang('uz')">UZ</button>

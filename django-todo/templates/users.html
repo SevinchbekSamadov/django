@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block tilte %}
+    Users list
+{% endblock tilte %}
+
+{% block content %}
+    <h1> user's list page</h1>
+    <ul>
+        {% for user in object_list  %}
+            <li><a href = "{% url 'todo-list' user.pk %}"> {{user.username}}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock  %} 

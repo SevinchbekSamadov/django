@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}
+    My books list
+{% endblock %}
+{% block content %}
+    <h1>Books list</h1>
+    <ul>
+        {% for book in object_list %}
+            <li><a href="/about?books={{ book.id }}">{{ book.book_name }}</a></li>
+        {% endfor %}
+    </ul>
+
+    <script>
+        function setLang(lang) {
+            const Http = new XMLHttpRequest();
+            const url='/setLang/' + lang;
+            Http.open("GET", url);
+            Http.send();
+
+            Http.onreadystatechange = (e) => {
+                location.reload();
+            }
+        }
+    </script>
+{% endblock %}

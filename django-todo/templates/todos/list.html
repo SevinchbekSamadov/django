@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block tilte %}
+    Todos list
+{% endblock tilte %}
+
+{% block content %}
+    <h1> Todos list <sup><a href = "{% url 'todo-new' %}" style = "color:lime">Yangi qo'shish</a></sup></h1>
+    <table>
+        <thead>
+            <tr> 
+                <th col = "scope"># </th>
+                <th col = "scope">Title </th>
+                <th col = "scope">start time </th>
+                <th col = "scope">end time </th>
+                <th col = "scope">Description</th>
+                <th col = "scope">User</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in object_list %}
+                <tr>
+                    <th col = "scope">{{forloop.counter}}</th>
+                    <td>{{todo.title}}</td>
+                    {% comment %} <td>{{todo.start_time}}</td> {% endcomment %}
+                    <td>{{todo.start_time|date:"d.m.y"}}<br>{{todo.start_time|time:"H:i"}}</td>
+                    <td>{{todo.end_time|date:"d.m.y"}}<br>{{todo.end_time|time:"H:i"}}</td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.user_id}}</td>
+                </tr>
+            {% endfor %}
+    </table>
+{% endblock  %}

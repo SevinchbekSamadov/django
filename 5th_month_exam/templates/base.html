@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+    My books
+    {% endblock %}</title>
+<style>
+.dropdown {
+  position: relative;
+  display: inline-block;
+    }
+        
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+    }
+        
+.dropdown:hover .dropdown-content {
+ display: block;
+    }
+</style>
+</head>
+<body>
+    <div>
+        <div style="float: right">
+            <button onclick="setLang('uz')">UZ</button>
+            <button onclick="setLang('en')">EN</button>
+        </div>
+        <h1>BOOKS</h1>
+    </div>
+    <div style="float: right">
+        {% if user.is_authenticated %}
+            <div class="dropdown">
+              <span>{{ user.username}}</span>
+              <div class="dropdown-content">
+                <p><a href="/accounts/logout">Chiqish</a></p>
+              </div>
+            </div>
+        {% else %}
+            <a href="/accounts/login/">Kirish</a> yoki <a href="/accounts/register/">Registratsiya</a>
+        {% endif %}
+    </div> shunday
+        {% block content %}bunday sok
+        
+        {% endblock %}
+</body>
+</html>

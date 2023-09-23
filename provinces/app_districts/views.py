@@ -2,12 +2,16 @@ from django.views.generic import ListView
 from .models import Viloyat, Tuman
 from django.http import HttpResponse
 from django.db.models import F
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
 
-class ViloyatView(ListView):
+class ViloyatView(LoginRequiredMixin,UserPassesTestMixin, ListView):
     model = Viloyat
     template_name = 'viloyat.html'
+
+    def test_func(self):
+        return self.request.user.is_superuser
 
 class TumanView(ListView):
     # model = Tuman

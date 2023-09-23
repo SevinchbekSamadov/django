@@ -18,6 +18,7 @@ class Tuman(models.Model):
 
     class Meta:
         db_table = 'tumanlar'
+        # ordering = ['forloop.counter']
 
 # def __str__(self):
 #     return str(self.engine) + "  (ref:" + str(self.ref) + ")"
